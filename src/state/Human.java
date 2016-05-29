@@ -4,7 +4,7 @@ package state;
  * Created by Артем on 25.05.2016.
  */
 
-//Context
+//Context(Strategy client)
 public class Human {
     private Situation situation;
     public static final int AMOUNT=10;
@@ -17,18 +17,18 @@ public class Human {
     }
 }
 
-//state
+//state(strategy)
 interface  Situation {
     void act(Human human);
 }
 
-//ConcreteState
+//ConcreteState(Concrete strategy)
 class RiverBank implements Situation{
 
     @Override
     public void act(Human context) {
         System.out.println("Human is on the river bank.Human is a fisher");
-        context.setSituation(new MushroomMeadow());
+        //context.setSituation(new MushroomMeadow());
     }
 }
 
@@ -37,7 +37,7 @@ class MushroomMeadow implements Situation{
     @Override
     public void act(Human context) {
         System.out.println("Human is on the mushroom meadow.Human is mushroom picker");
-        context.setSituation(new AnimalObserver());
+        //context.setSituation(new AnimalObserver());
     }
 }
 
@@ -46,6 +46,6 @@ class AnimalObserver implements Situation{
     @Override
     public void act(Human context) {
         System.out.println("Animal is seen.Human is a hunter");
-        context.setSituation(new RiverBank());
+        //context.setSituation(new RiverBank());
     }
 }
